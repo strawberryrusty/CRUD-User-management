@@ -8,16 +8,16 @@ import { ColDef } from 'ag-grid-community';
 })
 export class UserListComponent implements OnInit {
   rowData: any[] = [
-    {userId: '1123', firstName: 'james', lastName: 'roger'},
-    {userId: '1125', firstName: 'fred', lastName: 'kind'},
+    {userId: '1123', firstName: 'james', lastName: 'stevenson', dateOfBirth: '8th April', birthPlace: 'London'},
+    {userId: '1125', firstName: 'fred', lastName: 'kind', dateOfBirth: '7th April', birthPlace: 'Madrid'},
   ];
 
   colDefs: ColDef[] = [
     {field: 'userId'},
     {field: 'firstName'},
-    {field: 'lastName'}
-    // {field: 'dateOfBirth'},
-    //  {field: 'birthPlace'}
+    {field: 'lastName'},
+    {field: 'dateOfBirth'},
+     {field: 'birthPlace'}
   ];
 
   constructor() { }
