@@ -14,5 +14,9 @@ export class UsersDataService {
     return users;
   }
 
+  getUserDatabyId(id: string){
+  this.usersData.find(x => {x.userId === id});
+  }
+
   constructor() { }
 }
