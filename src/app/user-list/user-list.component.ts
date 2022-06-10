@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ColDef } from 'ag-grid-community';
+import { Router } from '@angular/router';
+import { CellDoubleClickedEvent, ColDef } from 'ag-grid-community';
 import { UsersDataService } from '../users-data.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class UserListComponent implements OnInit {
   rowData: any[] = [];
   userService : UsersDataService;
 
+
+
   colDefs: ColDef[] = [
     {field: 'userId'},
     {field: 'firstName'},
@@ -19,13 +22,20 @@ export class UserListComponent implements OnInit {
      {field: 'birthPlace'}
   ];
 
-  constructor(userService : UsersDataService) {
+  constructor(userService : UsersDataService, private router: Router) {
     this.userService = new UsersDataService;
   }
 
 
   ngOnInit(): void {
     this.rowData = this.userService.getUsersData();
+  }
+
+  onCellDoubleClicked(event: CellDoubleClickedEvent){
+    //navigate to detail page
+    console.log(event);
+    const userId = event.data.userId;
+    this.router.navigate(['/users', {id: userId}]);
   }
 
 }
