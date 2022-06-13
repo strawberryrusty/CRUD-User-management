@@ -17,8 +17,9 @@ import { RouterModule } from '@angular/router';
 
 const routes = [
  { path: '', redirectTo: 'users', pathMatch: 'full' },
+ { path: 'users/:id', component: UserDetailComponent},
  { path: 'users', component: UserListComponent },
- { path: 'users:id', component: UserDetailComponent }
+// { path: 'users/:id', component: UserDetailComponent, outlet: 'userDetails' }
 ];
 @NgModule({
   declarations: [

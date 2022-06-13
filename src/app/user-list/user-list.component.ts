@@ -35,7 +35,11 @@ export class UserListComponent implements OnInit {
     //navigate to detail page
     console.log(event);
     const userId = event.data.userId;
-    this.router.navigate(['/users', {id: userId}]);
+    // this.router.navigate(['/users', {id: userId}]);
+    // this.router.navigate([`/users/${userId}`]);
+    // this.router.navigateByUrl(`/users/${userId}`);
+    // this.router.navigate([{ outlets: { userDetails: ['users', userId] }}]);
+     this.router.navigate(['users', userId]);
   }
 
 }
