@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class UsersDataService {
   usersData: any[] = [
-    {userId: '1123', firstName: 'james', lastName: 'stevenson', dateOfBirth: '8th April', birthPlace: 'London'},
+    {userId: '1123', firstName: 'james', lastName: 'Johnson', dateOfBirth: '8th April', birthPlace: 'London'},
     {userId: '1125', firstName: 'fred', lastName: 'kind', dateOfBirth: '7th April', birthPlace: 'Madrid'},
   ];
 
