@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CellDoubleClickedEvent, ColDef } from 'ag-grid-community';
+import { CellDoubleClickedEvent, ColDef, RowAnimationCssClasses } from 'ag-grid-community';
 import { UsersDataService } from '../users-data.service';
+import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-user-list',
@@ -28,7 +32,16 @@ export class UserListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.rowData = this.userService.getUsersData();
+    //simple way to get services
+    // this.rowData = this.userService.getUsersData();
+
+    //subscribing to an observable
+    this.userService.getUsersData().subscribe(
+      (res) => {
+        console.log(res);
+        this.rowData = res;
+      }
+    );
   }
 
   onCellDoubleClicked(event: CellDoubleClickedEvent){
