@@ -1,7 +1,7 @@
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
-import { Observable} from 'rxjs';
+import { Observable, switchMap} from 'rxjs';
 import { UsersDataService } from '../users-data.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UsersDataService } from '../users-data.service';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  hero :any = {};
+  user$!: Observable<any>;
 
 
   constructor( private route: ActivatedRoute, private router: Router, private userService : UsersDataService) {}
@@ -24,18 +24,22 @@ export class UserDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.hero = this.route.params.subscribe(
+      this.route.params.subscribe(
       (res) => {
         console.log(res);
         let userIdNumber : string = res['id'];
         console.log(userIdNumber);
-
-        //To be finished:
-        // let singleUserData = this.userService.getUserDatabyId(userIdNumber).subscribe(
-        //   (res) => { return res}
-        // );
+        this.user$ = this.userService.getUserDatabyId(userIdNumber);
+        console.log(this.user$);
       }
     )
+
+    // this.user$ = this.route.paramMap.pipe(
+    //   switchMap((params: ParamMap) =>
+    //     this.userService.getUserDatabyId(params.get('id')!))
+    // );
+
+
 
     //use the activatedroute, router put as dependancy injecting here:
     // this.router.something(url, (params) => {
