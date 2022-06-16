@@ -17,7 +17,7 @@ export class UsersDataService {
   }
 
   getUserDatabyId(id: string): Observable<any> {
-  let user = this.usersData.find(x => {x.userId === id});
+  let user = this.usersData.find((x) => (x.userId === id));
   return of(user);
   }
 
