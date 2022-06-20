@@ -60,5 +60,4 @@ export class UserDetailComponent implements OnInit {
       console.log(this.reactiveForm);
     }
 
-
 }
