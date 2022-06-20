@@ -1,5 +1,6 @@
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { Observable, switchMap} from 'rxjs';
 import { UsersDataService } from '../users-data.service';
@@ -11,7 +12,7 @@ import { UsersDataService } from '../users-data.service';
 })
 export class UserDetailComponent implements OnInit {
   user$!: Observable<any>;
-
+  reactiveForm!: FormGroup;
 
   constructor( private route: ActivatedRoute, private router: Router, private userService : UsersDataService) {}
   // 1. whether you have an id or not
@@ -24,6 +25,7 @@ export class UserDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
+
       this.route.params.subscribe(
       (res) => {
         console.log(res);
@@ -34,6 +36,11 @@ export class UserDetailComponent implements OnInit {
       }
     )
 
+       this.reactiveForm = new FormGroup({
+       firstName: new FormControl(null),
+       lastName: new FormControl(null)
+
+    });
     // this.user$ = this.route.paramMap.pipe(
     //   switchMap((params: ParamMap) =>
     //     this.userService.getUserDatabyId(params.get('id')!))
@@ -48,5 +55,10 @@ export class UserDetailComponent implements OnInit {
     //then render the data in the template
     //})
   }
+
+     onSubmit(){
+      console.log(this.reactiveForm);
+    }
+
 
 }

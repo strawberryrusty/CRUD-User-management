@@ -5,3 +5,9 @@
   width: 420px;
   margin: 10 auto;
 }
+
+
+input {
+  display: block;
+  width: 100%;
+}

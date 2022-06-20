@@ -8,6 +8,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UsersDataService } from './users-data.service';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // const routes = [
 //   { path: 'users', component: UserListComponent, children: [
@@ -31,6 +32,7 @@ const routes = [
     BrowserModule,
     // AppRoutingModule,
     AgGridModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
 
   ],
