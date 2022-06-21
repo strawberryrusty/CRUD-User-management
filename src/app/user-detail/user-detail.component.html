@@ -4,14 +4,30 @@
   <p>Id: {{ user.userId }}</p>
 </div> -->
 
-<div class="form">
+<!-- <div class="form">
   <h2>User Details - Edit </h2>
-   <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+   <form *ngIf="user$ | async as user"
+   [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" >
      <label for="fname">First Name</label>
      <input type="text" id="fname" placeholder="First Name.." formControlName="firstName">
 
      <label for="lname">Last Name</label>
      <input type="text" id="lname" placeholder="Last Name.." formControlName="lastName">
+
+     <input type="submit" value="submit" id="btn">
+   </form>
+</div> -->
+
+<div class="form">
+  <h2>User Details - Edit </h2>
+   <form
+   (ngSubmit)="onSubmit()"
+   [formGroup]="reactiveForm" >
+     <label for="fname">First Name</label>
+     <input type="text" id="fname" placeholder="First Name.." formControlName="formFirstName">
+
+     <label for="lname">Last Name</label>
+     <input type="text" id="lname" placeholder="Last Name.." formControlName="formLastName">
 
      <input type="submit" value="submit" id="btn">
    </form>
