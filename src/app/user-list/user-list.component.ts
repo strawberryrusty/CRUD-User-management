@@ -15,6 +15,8 @@ import { Subscription } from 'rxjs';
 export class UserListComponent implements OnInit {
   rowData: any[] = [];
   userService : UsersDataService;
+  usersData = [];
+  // subscription : Subscription;
 
 
 
@@ -42,16 +44,20 @@ export class UserListComponent implements OnInit {
         this.rowData = res;
       }
     );
+
+    // **method to try
+    // this.userService.userChanged.subscribe(
+    //   () => {
+    //     this.rowData = this.userService.getUsersDataTest();
+    //   }
+    // );
+
   }
 
   onCellDoubleClicked(event: CellDoubleClickedEvent){
     //navigate to detail page
     console.log(event);
     const userId = event.data.userId;
-    // this.router.navigate(['/users', {id: userId}]);
-    // this.router.navigate([`/users/${userId}`]);
-    // this.router.navigateByUrl(`/users/${userId}`);
-    // this.router.navigate([{ outlets: { userDetails: ['users', userId] }}]);
      this.router.navigate(['users', userId]);
   }
 

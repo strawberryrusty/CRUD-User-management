@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { Observable, switchMap, map} from 'rxjs';
 import { UsersDataService } from '../users-data.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-user-detail',
@@ -19,7 +21,7 @@ export class UserDetailComponent implements OnInit {
 
 
 
-  constructor( private route: ActivatedRoute, private router: Router, private userService : UsersDataService, private fb: FormBuilder) {}
+  constructor( private route: ActivatedRoute, private router: Router, private userService : UsersDataService, private fb: FormBuilder, private location: Location) {}
   // 1. whether you have an id or not
    // if you dont have id, you need to render a form to create a new user
    //if you have a id you need to fetch user data of data id from data service
@@ -50,8 +52,9 @@ export class UserDetailComponent implements OnInit {
         this.user$.subscribe((res) => {
           this.userObj = res;
           this.reactiveForm = this.fb.group({
-            formFirstName: [res.firstName],
-            formLastName: [res.lastName]
+            userId: [res.userId],
+            firstName: [res.firstName],
+            lastName: [res.lastName]
           })
         })
         console.log(this.userObj);
@@ -61,6 +64,9 @@ export class UserDetailComponent implements OnInit {
 
    onSubmit(){
       console.log(this.reactiveForm);
+      const userFormData = this.reactiveForm.value
+      this.userService.updateUserData(userFormData);
+      this.location.back();
 
     }
 
