@@ -14,7 +14,6 @@ import { Subscription } from 'rxjs';
 })
 export class UserListComponent implements OnInit {
   rowData: any[] = [];
-  userService : UsersDataService;
   usersData = [];
   // subscription : Subscription;
 
@@ -28,34 +27,19 @@ export class UserListComponent implements OnInit {
      {field: 'birthPlace'}
   ];
 
-  constructor(userService : UsersDataService, private router: Router) {
-    this.userService = new UsersDataService;
-  }
-
+  constructor(private userService : UsersDataService, private router: Router) {}
 
   ngOnInit(): void {
     //simple way to get services
     // this.rowData = this.userService.getUsersData();
 
-    //subscribing to an observable
+    //subscribing to an observable to get all data:
     this.userService.getUsersData().subscribe(
       (res) => {
         console.log(res);
         this.rowData = res;
       }
     );
-
-    //method not working :
-    this.userService.userChanged.subscribe(
-      () => {
-        this.userService.getUsersData().subscribe(
-          (res) => {
-            this.rowData = res;
-          }
-        );
-      }
-    );
-
   }
 
 
