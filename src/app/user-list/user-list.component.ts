@@ -45,14 +45,19 @@ export class UserListComponent implements OnInit {
       }
     );
 
-    // **method to try
-    // this.userService.userChanged.subscribe(
-    //   () => {
-    //     this.rowData = this.userService.getUsersDataTest();
-    //   }
-    // );
+    //method not working :
+    this.userService.userChanged.subscribe(
+      () => {
+        this.userService.getUsersData().subscribe(
+          (res) => {
+            this.rowData = res;
+          }
+        );
+      }
+    );
 
   }
+
 
   onCellDoubleClicked(event: CellDoubleClickedEvent){
     //navigate to detail page
