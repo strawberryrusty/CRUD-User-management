@@ -13,31 +13,30 @@ export class UsersDataService {
 
   userChanged = new Subject<void>();
 
+  //get all users
   getUsersData(): Observable<any[]> {
     let users = this.usersData.slice();
     return of(users);
   }
 
-  //test method - can get rid off
-  getUsersDataTest(): any {
-    let users = this.usersData.slice();
-    return users;
-  }
-
+  //get user by id
   getUserDatabyId(id: string): Observable<any> {
   let user = this.usersData.find((x) => (x.userId === id));
   return of(user);
   }
 
   //update userdata
-  updateUserData(data: any) {
+  updateUserData(data: any): Observable<any[]> {
       const pos = this.usersData.findIndex((user) => {
       return user.userId === data.userId;
     })
     this.usersData[pos].firstName = data.firstName;
     this.usersData[pos].lastName = data.lastName;
-    // this.userChanged.next();
-    return this.usersData;
+    // return this.usersData;
+
+    //placeholder to return a value of the type observable
+    let users = this.usersData.slice();
+    return of(users);
   }
 
   constructor() { }

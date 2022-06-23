@@ -5,8 +5,6 @@ import { UsersDataService } from '../users-data.service';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -16,8 +14,6 @@ export class UserListComponent implements OnInit {
   rowData: any[] = [];
   usersData = [];
   // subscription : Subscription;
-
-
 
   colDefs: ColDef[] = [
     {field: 'userId'},
@@ -41,7 +37,6 @@ export class UserListComponent implements OnInit {
       }
     );
   }
-
 
   onCellDoubleClicked(event: CellDoubleClickedEvent){
     //navigate to detail page

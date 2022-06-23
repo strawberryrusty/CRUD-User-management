@@ -6,7 +6,6 @@ import { Observable, switchMap, map} from 'rxjs';
 import { UsersDataService } from '../users-data.service';
 import { Location } from '@angular/common';
 
-
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
@@ -19,31 +18,10 @@ export class UserDetailComponent implements OnInit {
   userObj = {};
   list!: Array<Element>;
 
-
-
   constructor( private route: ActivatedRoute, private router: Router, private userService : UsersDataService, private fb: FormBuilder, private location: Location) {}
-  // 1. whether you have an id or not
-   // if you dont have id, you need to render a form to create a new user
-   //if you have a id you need to fetch user data of data id from data service
-   //once you get this data, bind/show the data in the form and let user edit and save.
-   // when the user press save, show show confirm button overlay and if user confirm, save DATA in the data service, and then nagivate back to the user list page.
 
   ngOnInit(): void {
-
-    //   this.route.params.subscribe(
-    //   (res) => {
-    //     console.log(res);
-    //     let userIdNumber : string = res['id'];
-    //     console.log(userIdNumber);
-    //     this.user$ = this.userService.getUserDatabyId(userIdNumber).pipe(map((list: Array<Element>)  => {
-    //     this.list = list;
-    //     }));
-    //     console.log(this.list);
-    //     console.log(this.user$);
-    //   }
-    // )
-
-          this.route.params.subscribe(
+    this.route.params.subscribe(
       (res) => {
         console.log(res);
         let userIdNumber : string = res['id'];
@@ -66,21 +44,9 @@ export class UserDetailComponent implements OnInit {
       console.log(this.reactiveForm);
       const userFormData = this.reactiveForm.value
       this.userService.updateUserData(userFormData);
+      //you can subscribe to this line above and put a console log as a sucess and check the data etc
+
       this.location.back();
 
     }
-
-
-
-    //use the activatedroute, router put as dependancy injecting here:
-    // this.router.something(url, (params) => {
-    // const id = param.id
-    // use that id to fetch data for that user from the data service
-    //then render the data in the template
-    //})
-
-    //  onSubmit(){
-    //   console.log(this.reactiveForm);
-    // }
-
 }
