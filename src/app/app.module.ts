@@ -10,6 +10,7 @@ import { UsersDataService } from './users-data.service';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 // const routes = [
 //   { path: 'users', component: UserListComponent, children: [
@@ -28,7 +29,8 @@ const routes = [
     AppComponent,
     UserListComponent,
     UserDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
