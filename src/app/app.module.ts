@@ -22,7 +22,7 @@ const routes = [
  { path: '', redirectTo: 'users', pathMatch: 'full' },
  { path: 'users/:id', component: UserDetailComponent},
  { path: 'users', component: UserListComponent },
-// { path: 'users/:id', component: UserDetailComponent, outlet: 'userDetails' }
+{ path: 'new-user', component: UserCreateComponent }
 ];
 @NgModule({
   declarations: [
