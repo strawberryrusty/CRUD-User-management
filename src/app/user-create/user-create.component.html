@@ -1,1 +1,15 @@
-<p>user-create works!</p>
+<div class="form">
+  <h2> Create a new user </h2>
+   <form
+  (ngSubmit)="onSubmit()"
+   [formGroup]="newUserForm" >
+     <label for="fname">First Name</label>
+     <input type="text" id="fname" placeholder="First Name.." formControlName="firstName">
+
+     <label for="lname">Last Name</label>
+     <input type="text" id="lname" placeholder="Last Name.." formControlName="lastName">
+
+     <input type="submit" value="submit" id="btn">
+   </form>
+</div>
+
