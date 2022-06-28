@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
     {field: 'userId'},
     {field: 'firstName'},
     {field: 'lastName'},
-    {field: 'dateOfBirth'},
+    // {field: 'dateOfBirth'},
      {field: 'birthPlace'}
   ];
 
