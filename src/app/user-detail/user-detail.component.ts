@@ -25,7 +25,7 @@ export class UserDetailComponent implements OnInit {
       (res) => {
         console.log(res);
         let userIdNumber : string = res['id'];
-        console.log(userIdNumber);
+        console.log(userIdNumber, typeof(userIdNumber));
         this.user$ = this.userService.getUserDatabyId(userIdNumber);
         this.user$.subscribe((res) => {
           this.userObj = res;

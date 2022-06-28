@@ -39,5 +39,11 @@ export class UsersDataService {
     return of(users);
   }
 
+  addUser( data: any) {
+
+    const newUser = { userId: data.userId, firstName: data.firstName, lastName: data.lastName, birthPlace: data.birthPlace };
+    this.usersData.push(newUser);
+  }
+
   constructor() { }
 }
