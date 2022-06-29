@@ -17,9 +17,9 @@ export class UserCreateComponent implements OnInit {
 
     this.newUserForm = this.fb.group({
     userId: Math.floor(1000 + Math.random() * 9000).toString(),
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    birthPlace: ['', Validators.required]
+    firstName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
+    lastName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
+    birthPlace: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]]
   });
   }
 
