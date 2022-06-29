@@ -32,7 +32,8 @@ export class UserDetailComponent implements OnInit {
           this.reactiveForm = this.fb.group({
             userId: [res.userId],
             firstName: [res.firstName],
-            lastName: [res.lastName]
+            lastName: [res.lastName],
+            birthPlace: [res.birthPlace]
           })
         })
         console.log(this.userObj);

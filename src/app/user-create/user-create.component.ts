@@ -49,7 +49,5 @@ export class UserCreateComponent implements OnInit {
  }
 
 }
-function user() {
-  throw new Error('Function not implemented.');
-}
+
 

@@ -32,6 +32,7 @@ export class UsersDataService {
     })
     this.usersData[pos].firstName = data.firstName;
     this.usersData[pos].lastName = data.lastName;
+    this.usersData[pos].birthPlace = data.birthPlace;
     // return this.usersData;
 
     //placeholder to return a value of the type observable
