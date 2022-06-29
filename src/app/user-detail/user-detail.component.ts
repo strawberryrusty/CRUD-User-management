@@ -1,6 +1,6 @@
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { Observable, switchMap, map} from 'rxjs';
 import { UsersDataService } from '../users-data.service';
@@ -31,14 +31,29 @@ export class UserDetailComponent implements OnInit {
           this.userObj = res;
           this.reactiveForm = this.fb.group({
             userId: [res.userId],
-            firstName: [res.firstName],
-            lastName: [res.lastName],
-            birthPlace: [res.birthPlace]
+            firstName: [res.firstName, [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
+            lastName: [res.lastName, [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
+            birthPlace: [res.birthPlace, [Validators.required,Validators.pattern('^[a-zA-Z]+$')]]
           })
         })
         console.log(this.userObj);
       }
     )
+  }
+
+      get firstName()
+  {
+    return this.reactiveForm.get('firstName')
+  }
+
+    get lastName()
+  {
+    return this.reactiveForm.get('lastName')
+  }
+
+    get birthPlace()
+  {
+    return this.reactiveForm.get('birthPlace')
   }
 
    onSubmit(){

@@ -22,16 +22,26 @@
   <h2>User Details - Edit </h2>
    <form
    [formGroup]="reactiveForm"
-   (ngSubmit)="onSubmit()">
+   (ngSubmit)="onSubmit()"
+   *ngIf="this.reactiveForm">
      <label for="fname">First Name</label>
      <input type="text" id="fname" placeholder="First Name.." formControlName="firstName">
+      <div>
+       <span *ngIf="firstName && firstName.invalid && firstName.touched">This input is not valid</span>
+     </div>
 
      <label for="lname">Last Name</label>
      <input type="text" id="lname" placeholder="Last Name.." formControlName="lastName">
+       <div>
+     <span *ngIf="lastName && lastName.invalid && lastName.touched">This input is not valid</span>
+     </div>
 
      <label for="lname">Last Name</label>
      <input type="text" id="bplace" placeholder="Birthplace..." formControlName="birthPlace">
+      <div>
+     <span *ngIf="birthPlace && birthPlace.invalid && birthPlace.touched">This input is not valid</span>
+     </div>
 
-     <input type="submit" value="submit" id="btn">
+     <input type="submit" value="submit" id="btn" [disabled]="!reactiveForm.valid">
    </form>
 </div>
