@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup,  } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersDataService } from '../users-data.service';
 import { Location } from '@angular/common';
 
@@ -17,11 +17,26 @@ export class UserCreateComponent implements OnInit {
 
     this.newUserForm = this.fb.group({
     userId: Math.floor(1000 + Math.random() * 9000).toString(),
-    firstName: [''],
-    lastName: [''],
-    birthPlace: ['']
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    birthPlace: ['', Validators.required]
   });
+  }
 
+    get firstName()
+  {
+    return this.newUserForm.get('firstName')
+  }
+
+    get lastName()
+  {
+    return this.newUserForm.get('lastName')
+  }
+
+
+    get birthPlace()
+  {
+    return this.newUserForm.get('birthPlace')
   }
 
   onSubmit(){
@@ -34,3 +49,7 @@ export class UserCreateComponent implements OnInit {
  }
 
 }
+function user() {
+  throw new Error('Function not implemented.');
+}
+
