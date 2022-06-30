@@ -61,8 +61,6 @@ export class UserDetailComponent implements OnInit {
       const userFormData = this.reactiveForm.value
       this.userService.updateUserData(userFormData);
       //you can subscribe to this line above and put a console log as a sucess and check the data etc
-
-      this.location.back();
-
+      this.router.navigate(['../']);
     }
 }
