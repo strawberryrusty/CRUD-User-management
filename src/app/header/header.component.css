@@ -13,3 +13,15 @@
 .navbar .navbar-collapse {
   text-align: center;
 } */
+
+/* .body {
+   text-align: center;
+}
+
+.navbar {
+    text-align: center;
+} */
+
+#navbarSupportedContent{
+  justify-content: center;
+}
